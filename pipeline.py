@@ -102,8 +102,9 @@ def get_aliases(target_name) -> dict:
             f" in 18th century French revolutionary documents - e.g. formal titles, commonly used"
             f" nicknames, or contemporary epithets (both respectful and derogatory)"
             f" Do NOT include generic pronouns of any gender (il, elle, ils, elles, lui, vous, on, etc."
-            f" include only actual names/titles/epithets.only include terms with plausible historical basis."
+            f" include only actual names/titles/epithets that are confirmed to have been used to refer to {target_name}.only include terms with plausible historical basis."
             f" do not invent embellished or fabricated names/insults for volume. If uncertain whether a term was acutally used, omit it."
+            f"AVOID GENERIC TITLES, LABELS, etc."
             f" return only french variants. Return raw JSON matching the schema."
 
     )
@@ -215,23 +216,7 @@ class BatchLinguisticBreakdown(BaseModel):
 
         target_is_subject_or_object_reasoning: str = Field(description = f"If {target_name} is not a grammatical subject or grammatical object of the sentence, explain how that was determined. If {target_name} is a grammatical subject or grammatical object of the sentence explain how that was determined.")
 
-        target_is_subject_or_object: bool = Field (
-            description = (
-        f"True if {target_name}, referenced by name, alias, epithet, title, or a clear "
-        f"pronoun/reference resolvable from this sentence, is the grammatical subject or "
-        f"direct object of the main clause; OR is the target of an accusation, denunciation, "
-        f"or hostile characterization expressed via a preposition (e.g. 'contre {target_name}', "
-        f"'dénonciation de {target_name}'); OR is the subject of a subordinate or embedded clause "
-        f"that itself describes {target_name}'s alleged wrongdoing, conduct, or actions "
-        f"(e.g. 'Nous avons appris que {target_name} a fait...'). "
-        f"False if {target_name} is only mentioned in passing, as a neutral possessive or "
-        f"archival reference (e.g. a signature, an attendance list, 'de la main de {target_name}'), "
-        f"or as background context to someone else's unrelated action."
-            )
-
-          )
-
-        accusation_classification: Literal["A","B","C","D","E"] = Field (
+        accusation_classification: Literal["A","B","C","D","E","F","G"] = Field (
         description = (
        "The core nature of the sentences regarding accusations against {target_name}:\n"
        "A = Direct accusation: text directly charges the target with a crime, mideed, or tyrannical act\n"
@@ -239,7 +224,10 @@ class BatchLinguisticBreakdown(BaseModel):
        "C = Neutral factual statement: purely logistical, narrative, procedural, or non-judgemental \n"
        "D = Defense or denial: defends the target, offers alibi, counters a charge, or mitigates guilt \n"
        "E = Ambiguous/unclear: too OCR-corrupted, too fragmentary, or too context-dependent to classify \n\n"
-
+       "F = Procedural action: an arrest warrant, arrest decree, or dismissal order concerning the target, "
+       "with no accusatory language of its own beyond the procedural act itself\n"
+       "G = Outcome stated: the sentence directly states or reports the target's execution, acquittal, "
+       "release, or other final disposition/verdict\n\n"
       )
 
        )
@@ -302,7 +290,18 @@ def parse_linguistics_bulk(sentences:List[str])->List[dict]:
       Classification: E
       target_is_subject_or_object: False
       Reasoning: Severe OCR corruption renders the sentence grammatically incoherent. The subject, verb, and intent cannot be reliably determined.
+      
+      [EXAMPLE F — Procedural action]
+      Sentence: "Le Comité de salut public arrête que {target_name} sera sur-le-champ constitué prisonnier et conduit à l'Abbaye."
+      Classification: F
+      target_is_subject_or_object: True
+      Reasoning: This is a formal decree ordering {target_name}'s arrest and imprisonment. It records the procedural act itself — the order to detain — without stating any specific accusatory content or alleged wrongdoing.
 
+      [EXAMPLE G — Outcome stated]
+      Sentence: "{target_name} a été condamné à mort et exécuté le lendemain sur la place de la Révolution."
+      Classification: G
+      target_is_subject_or_object: True
+      Reasoning: The sentence directly reports {target_name}'s final disposition — a death sentence and execution — rather than describing an accusation or the reasoning behind it.
     """
   context_framing = (
     f"You are analyzing primary source documents from the French Revolutionary "
@@ -431,13 +430,7 @@ def get_files():
             rejection_counters[reason] = rejection_counters.get(reason,0) + 1
             rejected_items.append({'original_sentence':sentence, 'classification':classification, 'reason':reason, 'reasoning':reasoning,'target_is_subject_or_object_reasoning':target_is_subject_or_object_reasoning})
             continue
-        '''
-        if not parsed_logistics.get('target_is_subject_or_object'):
-            reason = "Rejected (Target is neither subject nor object)"
-            rejection_counters [reason] = rejection_counters.get(reason,0) + 1
-            rejected_items.append({'original_sentence':sentence, 'classification':classification, 'reason':reason, 'reasoning':reasoning,'target_is_subject_or_object_reasoning':target_is_subject_or_object_reasoning})
-            continue
-        '''
+
         evidence_chunk = parsed_logistics.get('verbatim_text_evidence')
         if not grounding_check(evidence_chunk,sentence):
             reason = "Failed Grounding Check"
@@ -523,7 +516,7 @@ def get_files():
 def second_run(sentence,target_name):
 
     class category_response(BaseModel):
-        category_classification :Literal["A","B","C","D","E"] = Field (description = "Assign the category letter that best fits this sentence")
+        category_classification :Literal["A","B","C","D","E","F","G"] = Field (description = "Assign the category letter that best fits this sentence")
         reason: str = Field(description="Provide your reason for choosing said category for the sentence.")
 
     context_framing = (
@@ -540,8 +533,8 @@ def second_run(sentence,target_name):
     prompt = (
              f"You are an expert on the French Revolution that took places from 1789 to 1799.\n"
              f"It was a time of political upheaveal and mass executions.\n"
-             f"Within this context, check whether {sentence},"
-             f"with respect to {target_name} fit the category it was assigned. The categories"
+             f"Within this context, classify {sentence},"
+             f"with respect to {target_name}. The categories"
              f"the sentences are assigned to are as follows:\n"
              f"A = Direct accusation: text directly charges the target with a crime, misdeed, or tyrannical act\n"
              f"B = Report of an accusation: references an accusation made by another person, decree, or committee\n"
@@ -578,9 +571,9 @@ def verify_with_voting(items, target_name):
    Re-verifies each candidate sentence's category classification by calling 
    second_run() 3 times per item and tallying the resulting votes.
 
-  Only items where a category receives at least 2 of the 3 votes are kept;
-  items wihout a majority are dropped. Each kept item is annotated with 
-  'veriication_tally'(the winning vote count) and 'verification_reason'(the reasons given by the votes that agreed with winning category).
+   Only items where a category receives at least 2 of the 3 votes are kept;
+   items wihout a majority are dropped. Each kept item is annotated with 
+   'veriication_tally'(the winning vote count) and 'verification_reason'(the reasons given by the votes that agreed with winning category).
     """
     kept = []
     for item in items:
@@ -604,13 +597,52 @@ def verify_with_voting(items, target_name):
 
             if winning_vote_count >= 2: # Keep if at least 2 votes for a category
                 # Add verification details to the item
+                item['classification'] = winning_vote_category
                 item['verification_tally'] = winning_vote_count
                 # Aggregate reasons specifically for the winning category
                 winning_category_reasons = [r for v, r in vote_reasons if v == winning_vote_category and r]
                 item['verification_reason'] = ", ".join(winning_category_reasons) if winning_category_reasons else "No specific reason provided for verification vote."
                 kept.append(item)
     return kept
+  
+def condense_charges(item):
+    class CondensedCharge(BaseModel):
+        condensed_charge:str = Field(description = "A condensed charge statement that preserves the core accusatory content:" 
+                                                    "the alleged act, the implication of wrongdoing and against whom/what it was committed. Matches the tone, length,"
+                                                    "and structure of the reference charge examples provided."
+                                                    )
+    cleaned_charges_path = ("/content/mydrive/MyDrive/cleaned_charges.txt")
+    with open(cleaned_charges_path,"r",encoding='utf-8') as f:
+        charge_template_examples = f.read()
 
+    prompt = (f"You are condensing an 18th-century French Revolutionary Tribunal accusation sentence"
+              f"into a short, formal charge statement against {target_name}.\n\n"
+              f"Condense the following sentence into a condensed charge that preserves only the"
+              f"most importance accusatory content - the alleged act, the implication of wrongdoing and against whome or what it was"
+              f"committed - and drops procedural filler, dates, register citations, and repetition.\n\n"
+              f"Use the following existing charges as a style and format template. Match their tone, "
+              f"length, and structure as closely as possible:\n\n"
+              f"{charge_template_examples}\n\n"
+              f"Original Sentence:\n{item['original_sentence']}"
+    )
+     
+    response = client.models.generate_content(
+         model = MODEL,
+         contents = prompt,
+         config = types.GenerateContentConfig(
+             response_schema = CondensedCharge,
+             response_mime_type = "application/json",
+             temperature = 0.0
+         )
+     )
+    
+    try:
+        data = json.loads(response.text)
+        return data.get('condensed_charge')
+    except json.JSONDecodeError as e:
+        print(f"JSON Decode Error in condense_charges: {e}")
+        print(f"RAW response (first 500 chars):{response.text[:500]}")
+        return None
 
 
 is_person, is_specific_enough, name_check_reasoning = check_is_person(target_name)
@@ -646,3 +678,8 @@ for item in verified_rejected:
     print(f" Sentence:   {item['original_sentence']}")
     print(f" Reason:     {item['reason']}")
     print()
+for item in verified_results:
+    if item['classification'] == 'A' or item['classification'] == 'B':
+        condensed_charges = condense_charges(item)
+        print('-------printing condensed charge_format----------')
+        print(condensed_charges)
