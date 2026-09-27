@@ -8,22 +8,84 @@ import json
 from pathlib import Path
 from collections import defaultdict
 
-#shannon, 3 times
 input_path = Path('/content/mydrive/MyDrive/Comite_Salut_Public_Tome7_1793-09-22_to_1793-10-24_cleaned.txt')
 CHAR_START = 0
-CHAR_END = 1415452
 CHUNK_SIZE = 8000
 OVERLAP = 800
 STAGE2_BATCH = 30
 MODEL = 'models/gemini-3.6-flash'
-target_name = input("Enter a target name:")
-
 results = []
 aliases = {}
 client = genai.Client(api_key=userdata.get('GeminiKey'))
-#with open(input_path,"r",encoding="utf-8") as f:
-#    data = f.read()
+with open(input_path,"r",encoding="utf-8") as f:
+    data = f.read()
+CHAR_END = len(data)
 
+print("Starting Extraction Process:\n")
+target_name = input("Enter a target name:")
+print("Pick a value based on the person's social class below:\n",
+      "0 = artisan/tradesmen, 1=clergy, 2=no occupation, 3=femme, 4=laborer/peasant, 5=legal/administrative, 6=merchant/bourgeois, 7=military,8=nobility.\n")
+social_class = input("Enter social class number:")
+
+
+class NameCheck(BaseModel):
+    is_person: bool = Field(description =
+     ("True if this name most plausibly refers to a specific individual human being"
+      "in the context of the French Revolutionary period(1789-1799). False if it more plausibly"
+      "refers to a place, city, organization, committee, section, abstract"
+      "concept, or generic/common term."))
+
+    is_specific_enough: bool = Field(description = ("True only if this name is specific enough to plausibly identify ONE individual"
+                                                    "(e.g. a full name, a distinctive surname, or a name paired with a title/epithet"
+                                                    "False if this is a bare, extremely common first name (e.g. 'Pierre','Francois',"
+                                                    "'Jean', 'Marie')on its own with no surnmae or distnguishing detail, since many"
+                                                    "unrelated historical figures could share that first name."))
+
+    reasoning:str = Field(description = ("Brief explanation covering both fields, what this name most plausibly refers to,"
+                                         "and whether it's specific enough to identify one individual, or too generic/common"
+                                         "a first name shared by many people in this period."))
+
+def check_is_person(name:str) -> tuple[bool,bool,str]:
+    """
+    Verifies that the entered target name satisfies the following requirements:
+    a. Plausibly refers to an individual person not a place, organization or abstract entity.
+    b. Is specific enough to identify one individual rather than a bare common first name.
+    """
+    prompt = (f" Evaluate the name '{name}' in the context of the French Revolutionary period"
+              f"(1789-1799).\n\n"
+              f"First, determine whether it most plausibly refers to a specific individual human"
+              f"being, as poosed to a place, city, organization, committee, section or abstract concept"
+              f".\n\n"
+              f"Second, determine whether the name is specific enough on its own to plausibly"
+              f"identiy ONE individual ( a full name, a distinctive surnmae or a name paired with)"
+              f"a title/epithet) as opposed to a bare, extremely common first name(e.g. 'Pierre','Francois','Jean','Marie)"
+              f"that many unrelated hsitorical figures could share .\n\n"
+              f"Return raw JSON matching the schema."
+            )
+
+    response = client.models.generate_content(
+        model = MODEL,
+        contents = prompt,
+        config = types.GenerateContentConfig(
+            response_schema = NameCheck,
+            response_mime_type = "application/json",
+            temperature = 0.0,
+            thinking_config = types.ThinkingConfig(thinking_budget=0)
+        )
+
+    )
+
+    try:
+        data = json.loads(response.text)
+        return (
+          data.get('is_person',True),
+          data.get('is_specific_enough',True),
+          data.get('reasoning','')
+      )
+    except json.JSONDecodeError as e:
+        print(f"JSON Decode Error in check_is_person: {e}")
+        print(f"Raw response from model(first 500 chars):{response.text[:500]}")
+        return True, True, "Could not verify - proceeding by default."
 
 class AliasExtraction(BaseModel):
     target_name: str
@@ -71,7 +133,7 @@ def normalize_hyphenation(text:str) ->str:
     """
     Rejoins certain words that are split up
     by a hyphen followed by a line break in the text files.
-    E.g 'se-\\nront becomes 'seront'.
+    E.g 'se-\nront becomes 'seront'.
     """
     return re.sub(r'(\w)-\n(\w)',r'\1\2',text)
 
@@ -136,7 +198,6 @@ def extract_candidates(chunk:str, alias_string: str) -> List[str]:
         print(f"JSON Decode Error in extract_candidates:{e}")
         return []
 
-
 class BatchLinguisticBreakdown(BaseModel):
     class SingleSentenceAnalysis(BaseModel):
         original_sentence: str = Field(
@@ -151,37 +212,48 @@ class BatchLinguisticBreakdown(BaseModel):
         direct_object: str = Field(
             description = "The entity targeted by the action. Write 'N/A' if intransitive."
         )
+
+        target_is_subject_or_object_reasoning: str = Field(description = f"If {target_name} is not a grammatical subject or grammatical object of the sentence, explain how that was determined. If {target_name} is a grammatical subject or grammatical object of the sentence explain how that was determined.")
+
         target_is_subject_or_object: bool = Field (
             description = (
-              f"True if {target_name}, referenced by name, alias, epithet, title, or a clear "
-              f"pronoun/reference resolvable from this sentence, is the grammatical subject or one of the grammatical subject or"
-              f"direct object or one of the direct objects of the main clause. False if they are only mentioned in passing, "
-              f"in a subordinate clause, an appositive, or as background context to someone else's action."
+        f"True if {target_name}, referenced by name, alias, epithet, title, or a clear "
+        f"pronoun/reference resolvable from this sentence, is the grammatical subject or "
+        f"direct object of the main clause; OR is the target of an accusation, denunciation, "
+        f"or hostile characterization expressed via a preposition (e.g. 'contre {target_name}', "
+        f"'dénonciation de {target_name}'); OR is the subject of a subordinate or embedded clause "
+        f"that itself describes {target_name}'s alleged wrongdoing, conduct, or actions "
+        f"(e.g. 'Nous avons appris que {target_name} a fait...'). "
+        f"False if {target_name} is only mentioned in passing, as a neutral possessive or "
+        f"archival reference (e.g. a signature, an attendance list, 'de la main de {target_name}'), "
+        f"or as background context to someone else's unrelated action."
             )
 
           )
 
-        accusation_classification: Literal["A","B","C","D","E"] =Field (
+        accusation_classification: Literal["A","B","C","D","E"] = Field (
         description = (
        "The core nature of the sentences regarding accusations against {target_name}:\n"
        "A = Direct accusation: text directly charges the target with a crime, mideed, or tyrannical act\n"
        "B = Report of an accusation, references an accusation made by another person, decree, or committee\n"
-       "C = Neutral factual statement, purely logistical,narrative, procedural, or non-judgemental\n"
-       "D = Defense or dential, defends the target, offers alibi, counters a charge, or mititgates guilt\n"
-       "E = Ambiguous/unclear, too OCR-corrupted, too fragmentary, or too context-dependent to classify confidently"
+       "C = Neutral factual statement: purely logistical, narrative, procedural, or non-judgemental \n"
+       "D = Defense or denial: defends the target, offers alibi, counters a charge, or mitigates guilt \n"
+       "E = Ambiguous/unclear: too OCR-corrupted, too fragmentary, or too context-dependent to classify \n\n"
 
       )
 
-     )
+       )
         verbatim_text_evidence: str = Field(
         description="The exact raw substring copied from the original text proving this classification."
-    )
+       )
         translated_sentence: str = Field(
           description = "Accurate English translation of the original source sentence"
         )
         reasoning: str =Field(
             description = "A concise summary of who is acting, who receives the action, and why this classifcation fits."
         )
+
+
     analyses: List[SingleSentenceAnalysis] = Field(
         description = "Grammatical and rehtocial breakdwon for every sentence in the input list."
     )
@@ -232,6 +304,17 @@ def parse_linguistics_bulk(sentences:List[str])->List[dict]:
       Reasoning: Severe OCR corruption renders the sentence grammatically incoherent. The subject, verb, and intent cannot be reliably determined.
 
     """
+  context_framing = (
+    f"You are analyzing primary source documents from the French Revolutionary "
+    f"period (1792-1794)... In this context, treat as relevant not only formal "
+    f"accusations made in official proceedings (denunciations, arrest decrees, "
+    f"tribunal reports), but also informal criticism, suspicion, gossip, or "
+    f"negative characterization of {target_name} in private correspondence or "
+    f"casual remarks \u2014 since such informal criticism often preceded and "
+    f"foreshadowed formal charges during this period. Distinguish, where "
+    f"possible, whether the negative content occurs in a formal official "
+    f"context or an informal/private one."
+)
   prompt = (
         f"You are a strict linguistic structural engine parsing 18th-century French trial documents.\n"
         f"For EACH sentence below, isolate the main subject, verb phrase and direct object."
@@ -245,9 +328,16 @@ def parse_linguistics_bulk(sentences:List[str])->List[dict]:
         f"C = Neutral factual statement: purely logistical, narrative, procedural, or non-judgemental \n"
         f"D = Defense or denial: defends the target, offers alibi, counters a charge, or mitigates guilt \n"
         f"E = Ambiguous/unclear: too OCR-corrupted, too fragmentary, or too context-dependent to classify \n\n"
+        f"F = Procedural action: an arrest warrant, arrest decree, or dismissal order concerning the target, "
+        f"with no accusatory language of its own beyond the procedural act itself\n"
+        f"G = Outcome stated: the sentence directly states or reports the target's execution, acquittal, "
+        f"release, or other final disposition/verdict\n\n"
         f"{FEW_SHOT_EXAMPLES}\n\n"
+        f"{context_framing}\n\n"
         f"Sentences to parse:\n{formatted_input}"
     )
+
+
   response = client.models.generate_content(
         model = MODEL,
         contents = prompt,
@@ -260,6 +350,7 @@ def parse_linguistics_bulk(sentences:List[str])->List[dict]:
   try:
       data = json.loads(response.text)
       return data.get('analyses',[])
+
   except json.JSONDecodeError as e:
       print(f"JSON Decode Error on batch:{e}")
       print(f"Raw response (first 500 chars): {response.text[:500]}")
@@ -296,7 +387,7 @@ def get_files():
     print(f"\nTotal candidate sentences to parse: {len(all_candidates)}")
     if not all_candidates:
         print("No candidates found. Exiting.")
-        return
+        return ([], []) # Return empty lists when no candidates are found
     """
     divmod allows us to send the sentences in batches of 30 and
     any remainder leftover to parse_linguistics_bulk, which in turn
@@ -332,21 +423,26 @@ def get_files():
         sentence = parsed_logistics.get('original_sentence')
         classification = parsed_logistics.get('accusation_classification')
         reasoning = parsed_logistics.get('reasoning')
+        target_is_subject_or_object_reasoning = parsed_logistics.get('target_is_subject_or_object_reasoning')
+
+
         if classification == 'E':
             reason = "Skipped (Ambiguous/OCR: Category E)"
             rejection_counters[reason] = rejection_counters.get(reason,0) + 1
-            rejected_items.append({'sentence':sentence, 'classification':classification, 'reason':reason})
+            rejected_items.append({'original_sentence':sentence, 'classification':classification, 'reason':reason, 'reasoning':reasoning,'target_is_subject_or_object_reasoning':target_is_subject_or_object_reasoning})
             continue
+        '''
         if not parsed_logistics.get('target_is_subject_or_object'):
             reason = "Rejected (Target is neither subject nor object)"
             rejection_counters [reason] = rejection_counters.get(reason,0) + 1
-            rejected_items.append({'sentence':sentence, 'classification':classification, 'reason':reason, 'reasoning':reasoning})
+            rejected_items.append({'original_sentence':sentence, 'classification':classification, 'reason':reason, 'reasoning':reasoning,'target_is_subject_or_object_reasoning':target_is_subject_or_object_reasoning})
             continue
+        '''
         evidence_chunk = parsed_logistics.get('verbatim_text_evidence')
         if not grounding_check(evidence_chunk,sentence):
             reason = "Failed Grounding Check"
             rejection_counters[reason] = rejection_counters.get(reason,0)+1
-            rejected_items.append({'sentence':sentence, 'classification':classification, 'reason':reason})
+            rejected_items.append({'original_sentence':sentence, 'classification':classification, 'reason':reason, 'reasoning':reasoning,'target_is_subject_or_object_reasoning':target_is_subject_or_object_reasoning})
             continue
 
         results.append({
@@ -356,7 +452,8 @@ def get_files():
             'action_verb': parsed_logistics.get('action_verb'),
             'direct_object': parsed_logistics.get('direct_object'),
             'classification': classification,
-            'reasoning': parsed_logistics.get('reasoning'),
+            'reasoning': reasoning,
+            'target_is_subject_or_object_reasoning': target_is_subject_or_object_reasoning
 
         })
 
@@ -377,7 +474,7 @@ def get_files():
     seen_rejected = set()
     unique_rejected = []
     for item in rejected_items:
-        key = (item['sentence'], item['reason'])
+        key = (item['original_sentence'], item['reason'])
         if key not in seen_rejected:
             seen_rejected.add(key)
             unique_rejected.append(item)
@@ -409,16 +506,142 @@ def get_files():
             print(f" Verb:       {r['action_verb']}")
             print(f" Predicate:  {r['direct_object']}")
             print(f" Reasoning:  {r['reasoning']}")
+            print(f"target_is_subject_or_object_reasoning: {r['target_is_subject_or_object_reasoning']}")
             print()
+
     if unique_rejected:
         print(f"----REJECTED CANDIDATES ({len(unique_rejected)})-------")
         for item in unique_rejected:
-            print(f" Sentence:        {item['sentence']}")
+            print(f" Sentence:        {item['original_sentence']}")
             print(f" Classification:  {item['classification']}")
             print(f" Reason:           {item['reason']}")
             print(f" Reasoning:           {item['reasoning']}")
+            print(f"target_is_subject_or_object_reasoning: {item['target_is_subject_or_object_reasoning']}")
             print()
-print("Starting Extraction Process:\n")
+    return unique_results, unique_rejected
+
+def second_run(sentence,target_name):
+
+    class category_response(BaseModel):
+        category_classification :Literal["A","B","C","D","E"] = Field (description = "Assign the category letter that best fits this sentence")
+        reason: str = Field(description="Provide your reason for choosing said category for the sentence.")
+
+    context_framing = (
+    f"You are analyzing primary source documents from the French Revolutionary "
+    f"period (1792-1794)... In this context, treat as relevant not only formal "
+    f"accusations made in official proceedings (denunciations, arrest decrees, "
+    f"tribunal reports), but also informal criticism, suspicion, gossip, or "
+    f"negative characterization of {target_name} in private correspondence or "
+    f"casual remarks \u2014 since such informal criticism often preceded and "
+    f"foreshadowed formal charges during this period. Distinguish, where "
+    f"possible, whether the negative content occurs in a formal official "
+    f"context or an informal/private one."
+)
+    prompt = (
+             f"You are an expert on the French Revolution that took places from 1789 to 1799.\n"
+             f"It was a time of political upheaveal and mass executions.\n"
+             f"Within this context, check whether {sentence},"
+             f"with respect to {target_name} fit the category it was assigned. The categories"
+             f"the sentences are assigned to are as follows:\n"
+             f"A = Direct accusation: text directly charges the target with a crime, misdeed, or tyrannical act\n"
+             f"B = Report of an accusation: references an accusation made by another person, decree, or committee\n"
+             f"C = Neutral factual statement: purely logistical, narrative, procedural, or non-judgemental \n"
+             f"D = Defense or denial: defends the target, offers alibi, counters a charge, or mitigates guilt \n"
+             f"E = Ambiguous/unclear: too OCR-corrupted, too fragmentary, or too context-dependent to classify \n\n"
+             f"Respond with the correct category letter for {sentence} and a reason why you chose said category.\n"
+             f"F = Procedural action: an arrest warrant, arrest decree, or dismissal order concerning the target, "
+             f"with no accusatory language of its own beyond the procedural act itself\n"
+             f"G = Outcome stated: the sentence directly states or reports the target's execution, acquittal, "
+             f"release, or other final disposition/verdict\n\n"
+             f"{context_framing}\n"
+             )
+
+    response = client.models.generate_content(
+        model = MODEL,
+        contents = prompt,
+        config = types.GenerateContentConfig(
+        response_schema = category_response,
+        response_mime_type = "application/json",
+        temperature = 0.6
+        )
+    )
+    try:
+        data = json.loads(response.text)
+        return data.get('category_classification'), data.get('reason')
+    except json.JSONDecodeError as e:
+        print(f"JSON Decode Error on accusation classification:{e}")
+        return None, None # Return None for both vote and reason on error
+
+
+def verify_with_voting(items, target_name):
+    kept = []
+    for item in items:
+        tally = defaultdict(int)
+        # Store reasons for each vote
+        vote_reasons = []
+        for _ in range(3):
+            vote, reason = second_run(item['original_sentence'], target_name)
+            if vote:
+                tally[vote] += 1
+                if reason:
+                    vote_reasons.append((vote, reason))
+                print('-------Verifying Sentence------------------')
+                print(item['original_sentence'][:20], "->", vote, "|", reason)
+        print('------------Finished Verification For Sentence------------------')
+
+        if tally:
+            # Find the winning vote category and its count
+            winning_vote_category = max(tally, key=tally.get)
+            winning_vote_count = tally[winning_vote_category]
+
+            if winning_vote_count >= 2: # Keep if at least 2 votes for a category
+                # Add verification details to the item
+                item['verification_tally'] = winning_vote_count
+                # Aggregate reasons specifically for the winning category
+                winning_category_reasons = [r for v, r in vote_reasons if v == winning_vote_category and r]
+                item['verification_reason'] = ", ".join(winning_category_reasons) if winning_category_reasons else "No specific reason provided for verification vote."
+                kept.append(item)
+    return kept
+
+
+
+is_person, is_specific_enough, name_check_reasoning = check_is_person(target_name)
+
+if not is_person:
+    print(f"\nWarning: '{target_name}' may not refer to an individual person.")
+    print(f"Reason: {name_check_reasoning}")
+    if input("Proceed anyway? (y/n): ").strip().lower() != 'y':
+        raise SystemExit
+
+elif not is_specific_enough:
+    print(f"\n'{target_name}' is a common first name that could match many different people.")
+    print(f"Reason: {name_check_reasoning}")
+    print("Try entering a full name or surname instead (e.g. 'Pierre Vergniaud' rather than 'Pierre').")
+    raise SystemExit
+
 aliases = get_aliases(target_name)
 print(f"Aliases:{aliases}\n")
-final_results = get_files()
+final_results, final_rejected = get_files()
+verified_results = verify_with_voting(final_results,target_name)
+verified_rejected = verify_with_voting(final_rejected,target_name)
+print(f"------- VERIFIED RESULTS ({len(verified_results)}) -------------")
+for r in verified_results:
+    print(f" Original:     {r['original_sentence']}")
+    print(f" English:      {r['translated_sentence']}")
+    print(f" Class:        Category {r['classification']}")
+    print(f" Votes:        {r['verification_tally']}")
+    print(f" Verify note:  {r['verification_reason']}")
+    print()
+
+print(f"------- VERIFIED REJECTED ({len(verified_rejected)}) -------------")
+for item in verified_rejected:
+    print(f" Sentence:   {item['original_sentence']}")
+    print(f" Reason:     {item['reason']}")
+    print()
+"""
+
+# Write the content to the file
+with open(output_dir / "pipeline.py", "w", encoding="utf-8") as f:
+    f.write(pipeline_content)
+
+print(f"Successfully wrote pipeline.py to {output_dir}/pipeline.py")
