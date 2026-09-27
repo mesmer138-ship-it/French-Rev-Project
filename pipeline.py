@@ -85,7 +85,7 @@ def check_is_person(name:str) -> tuple[bool,bool,str]:
     except json.JSONDecodeError as e:
         print(f"JSON Decode Error in check_is_person: {e}")
         print(f"Raw response from model(first 500 chars):{response.text[:500]}")
-        return True, True, "Could not verify - proceeding by default."
+        return True, True, "Could not verify - proceeding by default." #Returns (is_person, is_specific_enough, reasoning) defaulting to True/True so a parsing failure doesnt block valid name
 
 class AliasExtraction(BaseModel):
     target_name: str
@@ -306,7 +306,7 @@ def parse_linguistics_bulk(sentences:List[str])->List[dict]:
     """
   context_framing = (
     f"You are analyzing primary source documents from the French Revolutionary "
-    f"period (1792-1794)... In this context, treat as relevant not only formal "
+    f"period (1792-1794). In this context, treat as relevant not only formal "
     f"accusations made in official proceedings (denunciations, arrest decrees, "
     f"tribunal reports), but also informal criticism, suspicion, gossip, or "
     f"negative characterization of {target_name} in private correspondence or "
@@ -528,7 +528,7 @@ def second_run(sentence,target_name):
 
     context_framing = (
     f"You are analyzing primary source documents from the French Revolutionary "
-    f"period (1792-1794)... In this context, treat as relevant not only formal "
+    f"period (1792-1794).In this context, treat as relevant not only formal "
     f"accusations made in official proceedings (denunciations, arrest decrees, "
     f"tribunal reports), but also informal criticism, suspicion, gossip, or "
     f"negative characterization of {target_name} in private correspondence or "
@@ -574,6 +574,14 @@ def second_run(sentence,target_name):
 
 
 def verify_with_voting(items, target_name):
+    """
+   Re-verifies each candidate sentence's category classification by calling 
+   second_run() 3 times per item and tallying the resulting votes.
+
+  Only items where a category receives at least 2 of the 3 votes are kept;
+  items wihout a majority are dropped. Each kept item is annotated with 
+  'veriication_tally'(the winning vote count) and 'verification_reason'(the reasons given by the votes that agreed with winning category).
+    """
     kept = []
     for item in items:
         tally = defaultdict(int)
@@ -638,10 +646,3 @@ for item in verified_rejected:
     print(f" Sentence:   {item['original_sentence']}")
     print(f" Reason:     {item['reason']}")
     print()
-"""
-
-# Write the content to the file
-with open(output_dir / "pipeline.py", "w", encoding="utf-8") as f:
-    f.write(pipeline_content)
-
-print(f"Successfully wrote pipeline.py to {output_dir}/pipeline.py")
