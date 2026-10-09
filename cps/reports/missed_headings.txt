@@ -1,0 +1,548 @@
+
+clean_cps/cps_tome01.dated.jsonl: 222 headings used, 43 heading-shaped lines not used
+   view  153: 91 septembre 1799 (1>.
+   view  167: 97 septembre 1799.
+   view  173: Sainte-Menehould, 30 septembre [1792 J, an 1 de la République, 9 heures du soir.
+   view  229: Lille, 13 octobre [27^3], an 1 de la République.
+   view  229: Lille, 13 octobre [27^2], an 1 de la République.
+   view  230: Lille, 13 octobre j~a, an l de la République française.
+   view  235: Lille, 14 octobre [17^3], an l de la République française.
+   view  239: Lille, 16 octobre [1792 J, an 1 de la République.
+   view  240: Lille, 16 octobre [17 g 2], an l de la République française.
+   view  241: Doua't, 16 octobre, an 1 de la République.
+   view  253: Perpignan(l), 18 octobre [îjgs], an l de la République.
+   view  258: Camp de Vaudoncourt, 18 octobre, 10 heures du soir, an l de la République française.
+   view  262: Besançon, 19 octobre 3792, an 1 de la République.
+   view  263: Arras, 20 octobre, an l de la République.
+   view  298: A Perpignan, le 24 octobre 1792, l'an premier de la République.
+   view  299: Lille, â8 octobre 27g2.
+   view  303: Maubeuge, 3o octobre [27^2].
+   view  320: Convention nationale, séance du 6 novembre.
+   view  361: Lyon, 94 novembre [27^3], an i de la Républiquefrançaise.
+   view  377: En décembre 1792, les commissaires sont à Liège, faisant dans les environs des tournées d'inspection
+   view  384: Montpellier, 4. décembre 179L', an 1 de la République française.
+   view  400: Convention nationale, séance du 10 décembre 27^2.
+   view  401: Valenciennes, 10 décembre [1792 J, an 1 de la République.
+   view  402: Montpellier, 10 décembre [27^2], an 1 de la République française.
+   view  407: Convention nationale, séance du 10 décembre f]g 2.
+   view  408: Nice, 10 décembre [17^3], an 1 de la République française.
+   view  416: , Convention nationale, 13 décembre 27 g 2.
+   view  440: Nice, 20 décembre [1792 J, an 1 de la République française.
+   view  444: Convention nationale, 32 décembre 17 gs.
+   view  447: Blaux rappelle d'abord que, le 29 janvier 1793 (il écrit par erreur : le 3o jan-
+   view  449: 23 décembre [27^3].
+   view  450: 23 décembre [17g2].
+   view  456: Nice-, -27 décembre 17gs.
+   view  475: Nancy, le 2 janvier 1793, an II de la République française.
+   view  481: Nice, 2 janvier [1793], an II de la République française.
+   view  500: Mayence, le 6 janvier 1793.
+   view  501: Mayence, le 6 janvier 1793.
+   view  531: Fait et arrêté en Conseil, le 8 janvier 1793, l'an second de la République française, LE BBUN, ROLAN
+   view  537: Liège, g janvier [? 795], an Il de la République.
+   view  542: Liège, 10 janvier 27g3.
+   view  579: Anvers, 19 janvier [1793J, an 11 de la République.
+   view  581: Anvers, 19 janvier [27^5], an 11 de la République française.
+   view  591: Bruxelles, 20 janvier [275 3], an II de la République française.
+
+clean_cps/cps_tome02.dated.jsonl: 379 headings used, 42 heading-shaped lines not used
+   view   16: 32 janvier 1793.
+   view   29: Convention nationale, séance du 26 janvier fjg3.
+   view   49: Gand, le 31 janvier 1793.
+   view   57: Sarrelonis, 1Cl février iyg3.
+   view   61: Convention nationale, séance du 3 février 2 7#3.
+   view   68: Lorient, 4 février 27gS.
+   view  109: L'assemblée eut lieu en effet, le 27 novembre, au château de Po-
+   view  131: Arros, 12 février îjgB.
+   view  135: Calais, i3 février [1793], an 11W.
+   view  136: Calais, 13 février, an 11 de la République [1793].
+   view  176: Strasbourg, 19 février -1793, an 11 de la République française.
+   view  192: Gand, 32 février 1793, an II de la République.
+   view  228: Bruxelles, 26 février 2 7 9 3, an II de la République française.
+   view  232: Brest, 37 février îjgS.
+   view  241: icr mars 1793.
+   view  263: Liège, 3 mars [17g3], 9 heures du soir, an 11 de la République.
+   view  264: Liège, 3 mars [1793], an H de la République.
+   view  274: Strasbourg, 4 mars [1793 J, an n de la République.
+   view  293: Toulon, 7 mars g3.
+   view  297: 8 mars 179B.
+   view  308: 8 mars.
+   view  317: M Il remplaça, le 12 mars, Levasseur (de la Sarthe), d'abord désigné.
+   view  344: Mayence, 10 mars 27g3.
+   view  349: Lille, 11 mars [27^3], an 11 de la République.
+   view  357: Metz, 11 mars [1793J, an II de la République française.
+   view  364: Bruxelles, 12 mars [1793], an II de la République française.
+   view  381: Saint-Hermand, 15 mars.
+   view  398: Lyon, 17 mars [1793], an II de la République.
+   view  407: Bruxelles, 18 mars [1793], an II de la République française.
+   view  411: Perpignan, 18 mars , an II de la République françaiseW.
+   view  431: AIei-credi, go mars 1793.
+   view  435: Angers, 20 mars 27g3.
+   view  438: Convention nationale, séance du 21 mars 17§3.
+   view  439: Convention nationale, séance du si mars 179.j.
+   view  458: Valenciennes, 22 mars 27 g 3.
+   view  494: .94 mars 1793.
+   view  495: Montauban, 35 mars 1793, an II de la République.
+   view  513: Convention nationale, séance du âà mars 17g3.
+   view  514: Saint- Omer, 24 mars 27g3.
+   view  558: Tours, 27 mars [ 17 93 J, an II de la République française.
+   view  615: Saint-Malo, 31 mars 27g S, an II de la République.
+   view  620: Sedan, B1 mars 1 jg3, an II de la République W.
+
+clean_cps/cps_tome03.dated.jsonl: 441 headings used, 35 heading-shaped lines not used
+   view   26: Lille, 1er avril.ijg3, an Il de la République.
+   view   85: Valenciennes, 4 avril, 8 heures du soir.
+   view   95: Neuf château, 8 avril W.
+   view  109: Chantilly, le 5 avril 1798.
+   view  117: Douai, 5 avril 27g S, an 11 de la République.
+   view  125: 5 avril îjgB.
+   view  203: Meaux, 10 avril [1793J, an II de la République française W.
+   view  220: Lyon, 11 avril [ 179 3 ], an II de la République, 1 heure après-midi.
+   view  271: Nevers, 14 avril [27^5], an II de la République (4).
+   view  306: Fontenay-le-Peuple, 16 avril 1 jy3.
+   view  311: Bayonne, 16 avril fjg3.
+   view  320: Péronne, 77 avril 179 3.
+   view  323: Cahors, 17 avril fjg3, an II de la République.
+   view  365: 25 avril.
+   view  382: Lyon, 20 avril [Amar n'a appris que par les journaux le décret qui l'envoie à l'armée des Alpes.
+   view  389: Paris, 21 avril JygS.
+   view  392: Valenciennes, 21 avril 37g3.
+   view  417: Nancy, 22 avril 27g 3.
+   view  431: Valenciennes, 23 avril irjg3.
+   view  433: Saintes, 23 avril 27g3.
+   view  447: Valenciennes, aâ avril 1793.
+   view  456: Bordeaux, sâ avril 1793.
+   view  508: Périgueux, 37 avril îjgS.
+   view  509: Bayonnc, 37 avril 179 3.
+   view  514: Tonnerre, 97 avril 1793, an II de la République
+   view  523: Montpellier, 37 avril îjgS.
+   view  533: Monl-de-Marsan, 28 avril 17.9 3.
+   view  534: Sarreguemines, 28 avril 3 7 9 5.
+   view  534: Strasbourg, 28 avril 37g3.
+   view  565: Sedan, 3o avril 27 g 3.
+   view  575: Dunkerque, iev mai (1).
+   view  576: Auch, 1cr mai 1798.
+   view  600: Paris, 3 mai 17 y 3.
+   view  621: Paris, â mai ijgS.
+   view  633: Tours, 5 mai îjgB.
+
+clean_cps/cps_tome04.dated.jsonl: 460 headings used, 49 heading-shaped lines not used
+   view   35: Strasbourg, 6 mai îyyS, ann de la République.
+   view   61: A Paris, le 7 mai ijgS, l'an second de la République.
+   view   65: Niort, 7 mai (1).
+   view   70: 14 mai.
+   view  100: 10 mai 179B.
+   view  104: Dunkerquc, 10 mai
+   view  108: Saumur, 10 mai 27^3.
+   view  110: Embrun, 10 mai(l) 1793, an 11 de la République (2).
+   view  112: 91 janvier 1757 à Sisteron, député du Tiers-Etat de la sénéchaussée de Digne aux États généraux, mor
+   view  122: Valenciennes, 1.1 mai 1793 (2).
+   view  130: Saumur, 11 mai Citoyens mes collègues.
+   view  147: Continualion, 13 mai, 2 heures du matin.
+   view  152: Wissembourg, 12 mai 179.) (1).
+   view  154: Montèlimar, 12 mai 17go.
+   view  164: Paris, 13 mai l'jgS.
+   view  165: Lille, 13 mai
+   view  170: Chinon, 13 mai 179B (1).
+   view  189: Porentruy, 14 mai
+   view  247: Valenciennes, 18 mai (1).
+   view  260: Lille, 19 mai 179B (2).
+   view  263: Forbach, 19 mai 77g3.
+   view  268: Paris, âo mai ijg3.
+   view  280: Quartier général de Forbach, 20 mai !
+   view  289: Tours, 91 mai 1793 (1).
+   view  309: Bayeux, 22 mai
+   view  318: Douai, 23 mai 27gS.
+   view  342: Bergues, a5 mai
+   view  342: Saumur, û5 mai 1793 (2).
+   view  343: Lyon, 2_5 mai 1793 (2).
+   view  350: Paris, 2.6 mai 1793.
+   view  351: Cambrai, 26 mai 27g3.
+   view  352: La Rochelle, 26 mai 27gS.
+   view  352: Niort, 36 mai îjgS W.
+   view  360: Perpignan, 26 mai 27g3.
+   view  365: Cambrai, 37 mai îjgS.
+   view  367: Strasbourg, 37 mai 1793 (2).
+   view  368: Toulon, 27 mai (3).
+   view  376: Paris, 28 mai 27g3.
+   view  401: 6 janvier 1825. (Robert et Cougny, Dictionnaire des parlementaires.)
+   view  422: 10r juin 179?.
+   view  432: * Toulon, le" juin 1793 (1).
+   view  474: Brest, 5 juin 27g3.
+   view  496: Paris, y juin îjyS.
+   view  522: Pau, îo juin 1793 (1).
+   view  540: Lyon, 11 juin îjgB.
+   view  554: Lyon, 12 juin 27g3.
+   view  564: Niort, 13. juin 1793 (3).
+   view  573: Perpignan, 13 juin 17 p 3 W.
+   view  591: Maubeuge, 15 juin 179.) (2).
+
+clean_cps/cps_tome05.dated.jsonl: 375 headings used, 30 heading-shaped lines not used
+   view   64: Convention nationale, séance du 2.2 juin 1793.
+   view   77: Saint-Jean-Pied-de-Port, a3 juin 27g3. (Reçu le 3 juillet.) [Féraud dit qu'on peut être rassuré sur 
+   view   82: 514 juin 1793.
+   view   86: Convention nationale, séance du aU juin ijg3.\
+   view   89: Bayonne, sâ juin iyg3.
+   view  113: 97 juin 1793.
+   view  122: Strasbourg, 37 juin îygS.
+   view  122: Perpignan, 2-7 juin îjgS.
+   view  138: 39 juin 1793.
+   view  192: Saint-Chély, â juillet 1793.
+   view  202: Norl, 6 juillet 27g3.
+   view  223: Perpignan, 7 juillet ijy3. (Reçu le i5 juillet.) [Espert et Projean se plaignent de ne pas voir arri
+   view  275: Sedan, iU juillet 1793.
+   view  298: Tours, 17 juillet .1793.
+   view  347: Montauban, ai juillet iqg3.
+   view  352: 92 juillet 1793.
+   view  353: Convention nationa le, séance du 32 juillet îjgS.
+   view  355: Ancenis, 32 juillet ijgS.[Cavaignac, Gillet et Merlin (de Douai) insistent pour obtenir leur rappel.
+   view  368: ai juillet. 1793.
+   view  371: Niort, âU juillet 17g3.
+   view  410: Bergues, 37 juillet ijgS.
+   view  421: 98 juillet 1793.
+   view  461: Chinon, icr août 1793.
+   view  484: Calvi, 3 août 27g3.
+   view  489: Paris, â août 1793.
+   view  506: Sedan, 6 août 27gS.
+   view  538: Lille, îo août Jyg3.
+   view  548: Nantes,-11 août 17 g3.
+   view  558: Nancy, 13 août 27g3.
+   view  569: La Pape, 14 août 37gS.
+
+clean_cps/cps_tome06.dated.jsonl: 449 headings used, 26 heading-shaped lines not used
+   view   23: Arras, 16 août 27g3.
+   view   23: Nantes, 16 août [Quatre lettres de Gillet: 1° Il envoie au Comité un arrêté pris par lui, eu ex.c-
+   view   50: Lille, îg août 17g3.
+   view   69: Lille, 32 août 17g3.
+   view   73: Avignon, ai août 27g3.
+   view   83: Wissembourg, 33 août 1793.
+   view   98: Sans lieu, 23 août ij()3.
+   view  118: Convention nationale, séance du 25 août 27g3.
+   view  150: Arras, 37 août 1793.
+   view  157: La Guillotière, 37 août îjgS.
+   view  197: Perpignan, 29 août 27 g3.
+   view  237: Abbeville, ier septembre 179-3.
+   view  242: Rouen, iev septembre IJg3.
+   view  244: La Réole, 1cr septembre 1793.
+   view  248: Lons-le-Saunier, 1"' septembre îjg3.
+   view  291: Paris, le k septembre 1 jgS.
+   view  292: Senlis, ù septembre 1793.
+   view  298: Landau, à septembre îjgB.
+   view  367: Montpellier, 7 septembre tjgS.
+   view  451: Sans lieu, 11 septembre 27g3.
+   view  467: Paris, îâ septembre 1793.
+   view  469: Rouen, 12 septembre 17go.
+   view  511: 25 février 179^1. Voir à ce sujet Wallon, Histoire dtt Tribunal révolutionnaire de Paris, t. 11, p. 
+   view  519: Montélimar, 15 septembre 27g3.
+   view  545: Angoulênie, 16 septembre 17y3.
+   view  562: Orléans, 17 septembre. 1793.
+
+clean_cps/cps_tome07.dated.jsonl: 313 headings used, 21 heading-shaped lines not used
+   view   31: La Pape, 32 septembre 1793.
+   view   54: Paris, aU septembre 1793.
+   view   57: Versailles, sâ septembre 1793.
+   view   69: Toulouse, sù septembre 1793.
+   view   90: Arras, *6 septembre 1793.
+   view   99: Ollioules, 36 septembre 17g3.
+   view  129: 99 septembre 1793.
+   view  137: Cherbourg, 3g septembre 1793.
+   view  138: Bourges, 3g septembre 1793. (Reçu le i" octobre.) Citoyens collègues, Voici le précis de mes opérati
+   view  154: Dunkerque, 30 septembre.,179 3.
+   view  189: Agen, icr octobre 1793.
+   view  204: Convention nationale, séance du a octobre tjgS.
+   view  207: Rennes, 2 octobre 27g3.
+   view  246: Nice, â octobre gS.
+   view  249: Paris, 5 octobre ijgB.
+   view  271: Paris, 6 octobre 27g 3.
+   view  406: Auch, 12" octobre 17 9J.
+   view  410: Ollioules, 12 octobre '1793.
+   view  430: Péronne, 14 octobre g3.
+   view  440: 16 octobre, fit incarcérer ces trois Autrichiens à l'Abbaye.
+   view  558: Sedan, 21 octobre 37g3.
+
+clean_cps/cps_tome08.dated.jsonl: 502 headings used, 12 heading-shaped lines not used
+   view   83: 97 octobre ijgS.
+   view  194: 12 brumaire on n-2 novembre 1793.
+   view  284: 32 octobre 1793.
+   view  323: Convention nationale, séance du îg brumaire an ir9 novembre 1793.
+   view  403: Le Puy, 22 brumaire a; 11-12 novembre 179 3.
+   view  471: 17 janvier 179[,' — Cf. Wallon, llislo're du Tribunal révolutionnaire de Paris, 1. II, p. 365.
+   view  472: 20 mars 1799, comme il résulte d'une lettre de sa veuve au Directoire. — (Arch.
+   view  494: Paris, 18 nivôse an 11-7 janvier 1794. —
+   view  588: Ce matin, 3o brumaire, une division est partie pour s'emparer d'Hornbach.
+   view  616: Nantes, ier frimaire M an 11-21 novembre 1793.
+   view  640: 21 novembre. Nous donnons, selon notre habitude, la date du registre.
+   view  673: Sans lieu (Évreux), 3 frimaire anlI-23 novembre ijg3.
+
+clean_cps/cps_tome09.dated.jsonl: 615 headings used, 8 heading-shaped lines not used
+   view   90: n frimaire an il -il, décembre 1793.
+   view   95: Convention nationale, séance du 11 frimaire an II1er décembre 1793.
+   view  102: Auxerre, u frimaire an u-i'r décembre 1793.
+   view  296: 3 juillet 1805.
+   view  414: Landrecies, sâ frimaire an n-iâ décembre 1793.
+   view  472: Moniteur, séance du 96 janvier 1794.]
+   view  608: Sainl-Jean-Pied-de-Port, 2 nivôse fin 11-22 décembre 1793.
+   view  755: (25 décembre), et déjà la Convention l'ava i t fait im p r i mer.
+
+clean_cps/cps_tome10.dated.jsonl: 552 headings used, 5 heading-shaped lines not used
+   view  104: Arras, 17 nivôse, 8 heures et demie du soir- 6 janvier îjgà.
+   view  135: Paris, 19 nivôse au 11-8 janvier îygà.
+   view  235: A Perpignan, le 29 août 1793; fait double. Signé : Lignières père et fils.
+   view  430: 5 pluviôse on 11-9 ù janvier 1796.
+   view  804: Moniteur, séance du 25 ventôse.] (1) En marge : «Toutes les pièces renvoyées au Comité de sûreté gén
+
+clean_cps/cps_tome11.dated.jsonl: 480 headings used, 5 heading-shaped lines not used
+   view   43: Poniivy, si pluviôse au 1V.r ie" 1794, (Reçu le 21 févr i er. )
+   view  300: Versailles, 1er ventôse on 11-19 février 179ft.
+   view  319: 2- ventôse an II-20 février 179/1.
+   view  321: Paris, 2 ventôse II-20 février 1794.
+   view  724: Paris, 34 ventôse an n-iâ mars 1794.
+
+clean_cps/cps_tome12.dated.jsonl: 680 headings used, 8 heading-shaped lines not used
+   view  135: Sr.hijferstadt, fi germinal an Ti-fis mars îygà.
+   view  292: i3 germinal, par lequel il fut rappelé. Voir plus loin, à celle date.
+   view  314: 11 germinal. —
+   view  366: Chaurnonl, 13 germinal au 11-2 avril îjyà.
+   view  400: Paris, î5 germinal an II - à avril ij()à.
+   view  534: Doué, 2.2 germinal an 11-11 avril 17gU.
+   view  579: Nevers, aU germinal an 11-10 avril îjyà.
+   view  723: (3o germinal). Mais il yen a, aux Arch.
+
+clean_cps/cps_tome13.dated.jsonl: 469 headings used, 8 heading-shaped lines not used
+   view   54: J'ai pris, le a floréal, un arrêté qui suspend, en exécution du décret du 2 5 germinal, la coupe des
+   view   59: Aux fameuses redoutes de Saint-Bernard, 5 floréal an- II2 4 avril 27 g à.
+   view  232: Paris, 13 floréal-an 11-a mai 1794.
+   view  386: Paris, îg floréal an II - 8 mai t^gà.
+   view  457: » Paris, 33 floréal an 11-11 nuii 17gk.
+   view  520: Ó. germinal, la place de Mortagne, contrairement aux ordres du général en chef.
+   view  584: Port-de-la-Montagne (Toulon), 37 floréal an 11-16 mai îjyà.
+   view  630: 30 floréal, on signale dans ce moment la prise du Papillon (1), de 2 5o tonneaux, vin-portugal, coto
+
+clean_cps/cps_tome14.dated.jsonl: 531 headings used, 5 heading-shaped lines not used
+   view   79: Nive-Franche (Saint-Jean-Pied-de-Port), 13 prairial an iiier juin 1794.
+   view  152: 26 prairial cette réponse a été communiquée verbalement au citoyen Fréronn.
+   view  612: (6 messidor). La seconde émane de l'accusateur seul : il y dit qu'il va s'occuper de l'affaire de l'
+   view  628: 27 brumaire an n, que nous avons donné t. VIII, p. 487.
+   view  781: Bourg-Régénéré (Bourg-en-Bresse), 18 messidor an 1I6juillet ljgà. (Reçu le 12 juillet.)
+
+clean_cps/cps_tome15.dated.jsonl: 519 headings used, 8 heading-shaped lines not used
+   view   83: 11 messidor, l'arrêté n° 5, qui envoyait (5) Il y a ici une évidente erreur de date.
+   view  128: 23 messidor
+   view  182: 20 messidor, et mes Études et Leçons, 1 rc série, p. 2 1 5.
+   view  183: 27 messidor. La minute en est datée du a6. —
+   view  332: a thermidor cet arrêté, qui est sans date.
+   view  338: Bergerac, 2 thermidor (2) an 11-20 juillet 37yk.
+   view  425: Bruxelles, 6 thermidor- an II - 24 juillet 1794.
+   view  533: Le lendemain, 6 thermidor, l'attaque générale de la vallée eut lieu.
+
+clean_cps/cps_tome16.dated.jsonl: 421 headings used, 7 heading-shaped lines not used
+   view   51: Au quartier général du Boulou, sù thermidor an 11-11 août îjyà.
+   view   74: Strasbourg, 35 thermidor an 11-12 aoûtijgâ. (Reçu le 17 août. )
+   view  122: Lorgues, 37 thermidor an Il-l U août îjgâ.
+   view  515: Bruxelles, 17 fructidor on ir - 3 septembre 1794.
+   view  570: Strasbourg, 2.0 fructidor, an 11- 6 septembre îjtyà.
+   view  655: Caen, Û5 fructidor an II-U septembre 1794.
+   view  700: La Palisse, 37 fructidor an II-I3 septembre îjgû.
+
+clean_cps/cps_tome17.dated.jsonl: 456 headings used, 14 heading-shaped lines not used
+   view  112: Port-la-Montagne (Toulon), 5 vendémiaire an III26 septembre 1794.
+   view  112: Port-la-Montagne (T oul on), 5 vendémiaire an III26 septembre 37g à.
+   view  129: Port-la-Monlagne (Toulon), 6 vendémiaire an III37 septembre 1 jgà.
+   view  178: Au quartier général du Boulou, 9 vendémiaire an III3o septembre 1794.
+   view  235: Paris, i3 vendémiaire an Il [- 4 octobre 1.7 94.
+   view  250: ier vendémiaire dernier, arrête que le nombre des employés dans le bureau susénoncé sera augmenté d'
+   view  308: Cologne, 16 vendémiaire. an III-J octobre 1794.
+   view  363: Rennes, îg vendémiaire an 111-10 oclobre 1 jgà.
+   view  385: Au quartier général du Boulou, ao vendémiaire an III11 octobre 1794.
+   view  422: Paris, 33 vendémiaire an m-i3 octobre l'jgâ.
+   view  445: Paris, 13 vendémiaire au 111-14 octobre 1794.
+   view  555: Au quartier général du Boulou, 29 vendémiaire an 11120 octobre 1794.
+   view  743: Vire, 11 brumaire an n-iev novembre 1794.
+   view  794: 14 frimaire, sur le gouvernement révolutionnaire. Voir t. IX, p. 159'
+
+clean_cps/cps_tome18.dated.jsonl: 445 headings used, 15 heading-shaped lines not used
+   view   52: 28 juillet 1791 (v.'s.), rapporte ledit arrêté et charge la Commission des armes et poudres de le re
+   view  176: Port-la-Montagne (Toulon),$3 brumaire an IIIi3 novembre îjyà.
+   view  191: Thionville, sâ brumaire an in-iâ novembre 1 ygà.
+   view  194: De la citadelle de Figueras, îâ brumaire an III. Citoyens représentants. Je
+   view  326: Sans lieu, icr frimaire an 111-21 novembre 1 7.9 4.
+   view  423: Port-de-la-Montagne (Toulon), 7 frimaire an III27 novembre 17 yà.
+   view  487: 16 vendémiaire (1). Les ordres ont été expédiés pour le départ destiné à composer les vingt mille ho
+   view  514: 1" fructidor an 11, n° i3. Voir t. XVI, p. 190. —
+   view  752: Paris, 2U frimaire an ni-iâ décembre î jgâ.
+   view  752: Paris, sU frimaire an Ill-lit décembre ijgà.
+   view  754: Paris, âà frimaire an m-iâ décembre îygâ.
+   view  756: Lamballe, âà frimaire an m-iâ décembre îjgà.
+   view  761: Le Mans, zâ frimaire an m-iâ décembre îygâ.
+   view  831: Paris, 28 frimaire au m-18 décembre l'jgà.
+   view  851: Convention nationale, séance du 3o frimaire an IIIa0 octobre îjgà.
+
+clean_cps/cps_tome19.dated.jsonl: 358 headings used, 16 heading-shaped lines not used
+   view   45: 10 avril 18aa.
+   view  174: 3o nivôse. — MAREC."
+   view  211: 1er nivôse, un arrêté analogue. Voir plus haut, p. 6, l'arrêté n° 6.
+   view  226: Brest, î2 nivôse an m- ier janvier ijg5.
+   view  255: Paris, le ik nivôse an m-3 janvier ijgo.
+   view  351: Paris, le 18 nivôse an 1 II - 7 jan vier1 79 5.
+   view  356: Alençon, 18 nivôse 111-7 janvier 17go.
+   view  429: Brest, le 22 nivôse an III-ll janvier 1 y go.
+   view  473: « Paris, aU nivôse an ni-13 janvier tygo.
+   view  538: Figuières, 27 nivôse an II 1 - 1 6 janvier 1 y go.
+   view  539: Figuières, 37 nivôse an ni-16 janvier 77y 0.
+   view  612: Convention nationale, séance du 2 pluviôse anni-21 janvier îjgo.
+   view  662: Figuières, À pluviôse an iii — ^S janvier îjgo.
+   view  678: Quimperlé, 0 pluviôse an in — sâ janvier 179 5.
+   view  684: Nous avions fait, le 8 brumaire, une seconde réquisition de 200,000 quintaux.
+   view  788: Joinville, 11 pluviôse anm-So janvier 7 7 9 5.
+
+clean_cps/cps_tome20.dated.jsonl: 438 headings used, 11 heading-shaped lines not used
+   view   25: Paris, le i3 pluviôse an 11 i-ierfévrier ijg5.
+   view  121: Paris, le 18 pluviôse an III - 6 février 1 jg5.
+   view  126: Paris, 18 nivôse m- 6 février î jg5.
+   view  247: Paris, 2U pluviôse an III-Iâ février 1795.
+   view  342: Crevelt, 28 pluviôse-i 6 février 1 jg5.
+   view  363: Paris, le 29 pluviôse an ni- 17 février ijg5.
+   view  416: Sans lieu, le ier ventôse an in-ig février 1795.
+   view  525: Paris, 6 ventôse an II 1 - 2 ù février 1 790.
+   view  567: 18 brumaire an vin, membre du Corps législatif jusqu'à l'an xn, mort à Gendrey le 25 mai 1808.
+   view  636: Paris, 12 ventôse anii 1-2 mars 1795.
+   view  654: Blois, 13 ventôse anni-3 mars îjgo.
+
+clean_cps/cps_tome21.dated.jsonl: 527 headings used, 25 heading-shaped lines not used
+   view   56: Chdluns, 2-3 ventôse an III - 1 8 mars 1 9 5. (Reçu le 21 mars. )
+   view   88: Paris, a5 ventôse anm-i5 mars ijg5.
+   view   90: Bruxelles, 35 ventôse an III-I5 mars ijy5.
+   view  108: Nice, ÙO ventôse an ni-10 mars 1 jgo.
+   view  126: 26 ventôse (Journal des Débat. et des Décrets, n° 908, p. 358).
+   view  143: Convention nationale, séance du 37 ventôse anm-ij mars ijg5.
+   view  147: Ancenis, 27 ventôse anm-ij mars ijg5.
+   view  149: Mont-Glone (Saint-Florent-le-Vieil), 27 ventôse an IlI17 mars 1795.
+   view  152: Mont-Glone (Saint-Florent-le-Vieil), ^7 ventôse an III17 mars ijg5.
+   view  154: Metz, 27 ventdse aniu-ij mars 1 jg5.
+   view  171: 7 août 1793, membre du Conseil des Cinq-Cents en l'an iv, mort à Nîmes, le 36 juillet 18 22.
+   view  192: Paris, le 29 ventôse an m-ig mars 1795.
+   view  193: Paris, le 29 ventôse an iii - 19 mars ijg5.
+   view  393: Paris, 9 germinal anin-sg mars ijg5.
+   view  393: - Paris, 9 germinal anui-sg mars ijg5.
+   view  402: Au quartier général d'Oberingelheim, 9 germinal an III29 mars ijg5.
+   view  445: (i4 germinal) il recevra une mission pour la réparation des routes. Voir plus loin, à cette date.
+   view  500: Antonin (Tarn), le 16 juin 1761, juge de paix à Saint-Antonin, député de FAveyron à la Convention, j
+   view  500: » h janvier 1812. ( Dictionnaire des parlementaire». )
+   view  527: Convention nationale, séance du 15 germinal anin- 4 avril ijg5.
+   view  530: Paris, î5 germinal an ui-U avril 17g5.
+   view  589: Rouen, 16 germinal (-) an III- 5 avril 17g5.
+   view  612: Liège, le 17 germinal an 111-6 avril 1 jg5.
+   view  675: Rochefort, le 18 germinal an III-7 avril î 7q5.
+   view  785: Paris, 21 germinal aniii-10 avril 1J g5.
+
+clean_cps/cps_tome22.dated.jsonl: 694 headings used, 22 heading-shaped lines not used
+   view   52: 29 septembre 1793, et, sur la demande concernant les 22 caronades, arrête qu'il n'échet de délibérer
+   view   93: Paris, le 25 germinal an 111-14 avril 1795.
+   view   93: Paris, le 25 germinal an 111-14 avril 1795.
+   view  298: CAMUS, 27 messidor an VIII.
+   view  494: Boulogne - sur - mer, 8 floréal an111-27 avril 1795. (Reçu le 30 avril.)
+   view  582: Paris, le 12 floréal an III- 1er mai 1795.
+   view  734: Convention nationale, séance du 17 floréal - 6 mai 1795.
+   view  746: 1ª pluviose 1,760 livres.
+   view  746: 16 pluviose. 1,800
+   view  746: 1er ventose. 1,840 1 16 ventose.. 1,880
+   view  746: 16 germinal. 1,960
+   view  746: 1er floréal. 2,000
+   view  746: 16 floréal. 2.040
+   view  746: 16 prairial.. 2,120
+   view  746: 1r messidor. 2,160
+   view  746: 16 messidor.. 2,200
+   view  746: 1er thermidor.. 2,240
+   view  746: 16 thermidor.. 2,280
+   view  746: 16 fructidor. 2,360
+   view  746: 1er vendémiaire. 2,400
+   view  824: Convention nationale, séance du 20 floréal- 9 mai 1795.
+   view  824: Convention nationale, séance du 20 floréal - 9 mai 1795.
+
+clean_cps/cps_tome23.dated.jsonl: 531 headings used, 6 heading-shaped lines not used
+   view  247: i>6 mai 1795.] REPRÉSENTANTS EN MISSION.
+   view  318: 118 mai i 795.]
+   view  340: 119 mai 17<>r>.|
+   view  361: D) En marge: tfRépondu, le 8 prairial, qu’il so concerto avec les inspecteurs de la
+   view  484: Rochcforl, à prairial^ an 111— 9 3 mai 17 <)5. (Reçu le 29 mai.)
+   view  677: ( üg mai 1790.]
+
+clean_cps/cps_tome24.dated.jsonl: 649 headings used, 14 heading-shaped lines not used
+   view  100: Strasbourg, le 17 prairial an m- 5 juin 1795.
+   view  224: Réintégré, le & prairial an m, dans saplace, il demande le payement de son traitement du 1" floréal 
+   view  306: Amiens, aâ prairial an iii-in juin 1795.
+   view  353: M En marge: tt Répondu, 3 messidor." Voir plus loin, p. 587.
+   view  370: Paris, 36 prairial an III-14 juin tjg5.
+   view  433: Du quartier général à Jean-de-Luz, 28 prairial * » an m-1 6 juin 17g5.
+   view  502: Peu ix, 30 prairial ait 111-18 juin 1 ï 95.
+   view  502: Aix-la-Chapelle, 30 prairial ait iii - 18 juin ijg5.
+   view  576: La Haye, îi messidor an /-20 juin 1975.
+   view  760: Bonn, 8 messidor an 11 i-a 6 juin' 795.
+   view  780: Paris, 9 messidor au m-zj juin 1795.
+   view  815: Wesel, le 3 messidor an III.
+   view  826: Trévoux, 10 messidor au 111-2 8 juin 1 jg5.
+   view  842: Luxem bourg, 11 messidor an u 1-1 9 juin 1 i 9 5.
+
+clean_cps/cps_tome25.dated.jsonl: 577 headings used, 16 heading-shaped lines not used
+   view   37: Paris, 32 messidor an iii - So juin i7%5.
+   view   51: 4 nivôse pour l'approvisionnement des marchés par la voie de la réquisition.
+   view   63: Paris, i3 messidor an Il l - 1 er juillet .1 795.
+   view   66: La Haye, 1S messidor m ni-ier juillet 1 jg5.
+   view   71: Belfort, î3 messidor an m- 1er juillet 17go.
+   view   73: Trévoux, î3 messidor an ni-ier juillet ijg5.
+   view  186: Paris, î7 messidor an iii - 5 juillei ijg5.
+   view  205: 19 messidor, n° 8. —
+   view  371: Paris, le W messidor an III.
+   view  400: Paris, sâ messidor an 111-12. juillet 1 jg5.
+   view  578: Strasbourg, 1cr thermidor an in-ig juillet 1 jy5.
+   view  614: 26 messidor, reçue 3 thermidor. Donc, la réponse du Comité n'a pu être faite le 29 messidor.
+   view  645: Figuières, le 4 thermidor an 111-22 juillet iyg5.
+   view  682: Paris, 6 thermidor an i ii - -9 4 juillet 1 795.
+   view  748: Réponse du Comité, six fructidor an 1JI : « Exécuter purement et simplement l'arrêté du Comité de sa
+   view  774: Nice, 10 thermidor an u 1-9.8 juillet 1 jg5. (Reçu le 9 aoûl.) Citoyens collègues.
+
+clean_cps/cps_tome26.dated.jsonl: 544 headings used, 25 heading-shaped lines not used
+   view   81: Paris, le 13 thermidor an III-31 juillet 1J g5.
+   view   92: Au quartier-général de Figuières, 13 thermidor an JII31 juillet 1795.
+   view  120: Sans lieu [Toulon], 14 thermidor anni-ier août 1795.
+   view  215: Paris, le 17 thermidor an III. Le commissaire : CAPON. — Approuvé par le Comité de salut public, ce 
+   view  222: Paris, 18 thermidor anui-5 août 1 Jq5.
+   view  254: Convention nationale, séance du 19 thermidor au III - 6 août 1 jg5.
+   view  260: Nantes, le 19 thermidor an m-6 août ijg5.
+   view  295: Bayonne, le 21 thermidor an TII- 8 août 1795.
+   view  390: 28 thermidor. — Je suis à Huningue. Le général est à Blotzheim.
+   view  405: Paris, 37 thermidor an m-iâ août 1 jg5.
+   view  408: Paris, 37 thermidor an m- là août Í 795 (2).
+   view  460: Convention nationale, séance du 29 thermidor anm—16 août ijg5.
+   view  463: 16 thermidor. —
+   view  568: Toulon, 2 fructidor anm-ig août ijg5.
+   view  579: Paris, 3 fructidor anin-20 août 1795..
+   view  601: Paris, 4 fructidor anni-21 août 17$5.
+   view  622: Bonn, le 5 fructidor an 111-22 août ijg5.
+   view  626: Huningue, le 5 fructidor an m—22 août ijg5.
+   view  662: Paris, 7 fructidor anjii—sâ août 1795.
+   view  666: Paris, 7 fructidor on in — zâ août ijg5.
+   view  686: 10 fructidor. H
+   view  706: Paris, 9 fructidor, an ni, 2 heures du matin - 2 6 août 1J go.
+   view  727: Paris, 10 fructidor. an lII-27 août ijg5.
+   view  735: Au quartier général sous Briançon, 10 fructidor an III27 août 1 795.
+   view  782: Sans lieu, le 12 fructidor an III- 29 août îjgS.
+
+clean_cps/cps_tome27.dated.jsonl: 592 headings used, 3 heading-shaped lines not used
+   view   75: Au quartier général sous Briançon, 14 fructidor anIII-
+   view  247: Avignon, 20 fructidor, à minuit, an 11-6 septembre 1795.
+   view  297: Avignon, 22 fructidor au matin an III-8 septembre 1795.
+
+clean_cps/cps_tome28.dated.jsonl: 449 headings used, 13 heading-shaped lines not used
+   view  110: Pm *is, 8 vendémiaire an n—So scplrmbre 1795.
+   view  112: Dreux, 7 vendémiaire, àio heures du soir, et 8 vendémiaire an iv—^g el Ho septembre 1795.
+   view  132: Paris, 9 vendémiaire an n-1 er octobre 1795.
+   view  154: 13 floréal an 11, aucun arrêté ayant quelque rapport avec cet objet.
+   view  181: Machecoul, le 11 vendémiaire an 1 v-3 octobre 1795.
+   view  351: Paris, le 18 vendémiaire an iv — 10 octobre 1795.
+   view  362: Rodez, 18 vendémiaire, an iv — 10 octobre 1795.
+   view  362: Aix-la-Chapelle, 18 vendémiaire, an i v - 10 octobre 1795.
+   view  363: Strasbourg, 18 vendémiaire, an IV — 10 octobre 1795.
+   view  428: Les Sables, 20 vendémiaire an n — 12 octobre 179q.
+   view  430: Au qumtier généial d'Ob lingelheim, 20 vendémiaire au iv — 12 octobre 1795.
+   view  500: Toulon, le 23 vendémiaire an iv — 15 octobre 1795.
+   view  526: Toulon, le 24 vendémiaire an iv — 16 octobre 1795.
