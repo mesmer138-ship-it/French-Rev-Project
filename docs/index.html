@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thermidor: execution patterns at the Paris Revolutionary Tribunal</title>
+<meta name="description" content="A data study of who was executed at the Paris Revolutionary Tribunal (1792–1795), and what a model can and cannot learn from the charges.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero" id="top">
+  <div class="hero__art" role="img" aria-label="The Death of Marat, Jacques-Louis David, 1793"></div>
+  <div class="hero__shade"></div>
+  <nav class="nav">
+    <a href="#top" class="nav__brand">Thermidor</a>
+    <div class="nav__links">
+      <a href="#study">The project</a>
+      <a href="#sources">Sources</a>
+      <a href="#people">Six people</a>
+      <a href="#limits">Limits</a>
+    </div>
+  </nav>
+  <div class="hero__text">
+    <p class="eyebrow">Paris Revolutionary Tribunal · 1792–1795</p>
+    <h1>Thermidor</h1>
+    <p class="subtitle">A study of who was executed, and what a model can and cannot learn from the charges.</p>
+  </div>
+  <a class="scroll" href="#study" aria-label="Scroll to the project"><span></span></a>
+  <p class="credit">Jacques-Louis David, <i>The Death of Marat</i>, 1793. Public domain.</p>
+</header>
+
+<main>
+  <section class="band" id="study">
+    <div class="wrap">
+      <p class="eyebrow">The project</p>
+      <h2>Can the charge, the class and the date explain who was executed?</h2>
+      <p class="lead">Between 1792 and 1795 the Paris Revolutionary Tribunal tried thousands of people. This project asks how much of the outcome, execution or acquittal, can be predicted from three things: the wording of the charge, the defendant's social class and the date of the trial.</p>
+      <p>I trained a model on 5,264 charges recorded by the historian Wallon. Then I used it to read the accusations against six people drawn from the records of the Committee of Public Safety, and to show what it makes of each one.</p>
+      <div class="stats">
+        <div><span class="stat__n">5,264</span><span class="stat__l">charges in the dataset</span></div>
+        <div><span class="stat__n">0.863</span><span class="stat__l">AUC on 531 held-out trials</span></div>
+        <div><span class="stat__n">0.66</span><span class="stat__l">AUC on trials later than training</span></div>
+      </div>
+      <p>Date and class do most of the work: alone they reach 0.81. The charge text adds a little. And the model is much weaker on trials later than the ones it was trained on, which is the result to keep in mind when reading any score on this site.</p>
+    </div>
+  </section>
+
+  <section class="band band--alt" id="sources">
+    <div class="wrap wrap--wide">
+      <p class="eyebrow">The sources</p>
+      <h2>Three names to know.</h2>
+
+      <article class="source">
+        <figure class="source__fig" data-img="assets/wallon.jpg">
+          <div class="source__ph">Portrait of Henri-Alexandre Wallon</div>
+          <figcaption>Henri-Alexandre Wallon (1812–1904).</figcaption>
+        </figure>
+        <div class="source__text">
+          <h3>Wallon</h3>
+          <p>Henri-Alexandre Wallon was a French historian and statesman, later known as one of the founders of the Third Republic. His <i>Histoire du tribunal révolutionnaire de Paris, avec le journal de ses actes</i> (six volumes, 1880–1882) compiles the tribunal's case record: defendants, charges, outcomes and dates.</p>
+          <p>It is the source of every outcome in the dataset. It is a 19th-century compilation, not the raw archives, so some editorial handling sits between the original trials and the data.</p>
+        </div>
+      </article>
+
+      <article class="source source--flip">
+        <figure class="source__fig" data-img="assets/cps.jpg">
+          <div class="source__ph">The Committee of Public Safety</div>
+          <figcaption><i>Comité central de salut public, l’an II</i>. Watercolor from the period.</figcaption>
+        </figure>
+        <div class="source__text">
+          <h3>The Committee of Public Safety</h3>
+          <p>The Committee of Public Safety was created by the National Convention in April 1793 and became the working executive of the Terror, directing the war effort and the repression of suspected enemies of the Republic.</p>
+          <p>Its decisions and correspondence are published in Aulard's <i>Recueil des actes du Comité de salut public</i>. The accusations against the six people on this site are extracted from it.</p>
+        </div>
+      </article>
+
+      <article class="source">
+        <figure class="source__fig" data-img="assets/moniteur.jpg">
+          <div class="source__ph">Le Moniteur universel</div>
+          <figcaption><i>Gazette nationale, ou Le Moniteur universel</i>, no. 20, 17–20 July 1789 (the taking of the Bastille).</figcaption>
+        </figure>
+        <div class="source__text">
+          <h3>Le Moniteur</h3>
+          <p><i>Le Moniteur universel</i> was a Paris daily newspaper founded in November 1789 that became the Revolution's de facto official gazette, printing the debates of the assemblies and government announcements.</p>
+          <p>Where the Committee's records are thin for one of the six people, <i>Le Moniteur</i> supplies additional dated passages.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="band band--alt" id="people">
+    <div class="wrap">
+      <p class="eyebrow">Six people</p>
+      <h2>Read the accusations, then see what the model makes of them.</h2>
+      <p class="lead">Choose a person to see their charges in date order, each with its source, and the range of scores the model gives them.</p>
+      <div class="picker" id="picker" role="tablist" aria-label="Choose a person"></div>
+    </div>
+    <div class="timeline-wrap" id="timeline-wrap" hidden>
+      <div class="wrap wrap--timeline"><ol class="timeline" id="timeline" aria-live="polite"></ol></div>
+    </div>
+  </section>
+
+  <section class="band" id="limits">
+    <div class="wrap">
+      <p class="eyebrow">How to read the scores</p>
+      <h2>A score is not a verdict.</h2>
+      <p class="lead">It estimates how often similar past cases ended in execution. It does not measure guilt, and it is not a calibrated probability.</p>
+      <p>Scores move with the wording of a charge: rewordings of the same accusation scored anywhere between 0.23 and 0.73. That is why each person gets a range, not one number.</p>
+    </div>
+  </section>
+
+  
+</main>
+
+<footer class="foot"><div class="wrap">Thermidor · a data study, not a historical verdict.</div></footer>
+<script src="data/people.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
