@@ -286,3 +286,7 @@ figcaption{margin-top:10px;font-size:.72rem;color:var(--muted)}
   .hero__text{padding-bottom:56px}
   h1{font-size:clamp(2.6rem,9vw,4.5rem)}
 }
+@media (max-width:640px){
+  .nav__links{display:flex !important;width:100%;gap:18px;overflow-x:auto;white-space:nowrap}
+  .nav__links a{display:inline-block !important}
+}
