@@ -18,10 +18,12 @@
   <nav class="nav">
     <a href="#top" class="nav__brand">Thermidor</a>
     <div class="nav__links">
+      <a href="#background">Background</a>
       <a href="#study">The project</a>
       <a href="#sources">Sources</a>
-      <a href="#people">Six people</a>
-      <a href="#limits">Limits</a>
+      <a href="#people">Five people</a>
+      <a href="#explained">Inside the model</a>
+      <a class="nav__gh" href="https://github.com/mesmer138-ship-it/French-Rev-Project" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
   </nav>
   <div class="hero__text">
@@ -29,23 +31,55 @@
     <h1>Thermidor</h1>
     <p class="subtitle">A study of who was executed, and what a model can and cannot learn from the charges.</p>
   </div>
-  <a class="scroll" href="#study" aria-label="Scroll to the project"><span></span></a>
-  <p class="credit">Jacques-Louis David, <i>The Death of Marat</i>, 1793. Public domain.</p>
+  <a class="scroll" href="#background" aria-label="Scroll to the background"><span></span></a>
+  <p class="credit">Jacques-Louis David, <i>The Death of Marat</i>, 1793.</p>
 </header>
 
 <main>
+  <section class="band band--alt" id="background">
+    <div class="wrap wrap--wide">
+      <p class="eyebrow">Background</p>
+      <h2>From a king's trial to the Terror.</h2>
+      <div class="bg">
+        <figure class="bg__fig">
+          <img src="assets/louis-xvi.jpg" alt="Louis XVI in his coronation robes, painted by Antoine-François Callet">
+          <figcaption>Antoine-François Callet, <i>Louis XVI in his coronation robes</i>, c. 1779.</figcaption>
+        </figure>
+        <div class="bg__text">
+          <p class="lead">In 1789 the Revolution turned France from an absolute monarchy into a constitutional one. Louis XVI kept his crown, but lost the trust of the Revolution when he tried to flee Paris with his family in June 1791 and was stopped at Varennes.</p>
+          <p>In April 1792 France went to war with Austria, soon joined by Prussia. On 10 August 1792 crowds stormed the Tuileries palace; the monarchy was suspended and the royal family was locked in the Temple. A week later, on 17 August, a first special tribunal was set up in Paris to try the “crimes of 10 August”; it sat until the end of November 1792. A new assembly, the National Convention, abolished the monarchy and declared the Republic on 22 September 1792, the first day of Year I. That is also day zero for the dates in this project's model.</p>
+          <p>The Convention tried the king itself. In January 1793 it found “Louis Capet” guilty of conspiring against liberty and, by a narrow majority, sentenced him to death. He was guillotined in Paris on 21 January 1793.</p>
+          <p>The spring that followed was a crisis: war with Britain and more of Europe, a royalist rising in the Vendée, and in April the defection of General Dumouriez to the Austrians. The Convention answered with new institutions. On 10 March 1793 it created a new, permanent court, the Revolutionary Tribunal, to try crimes against the Republic, with no appeal. Wallon's record, and this project's data, cover both courts. On 6 April it created the Committee of Public Safety, which became the working government of the Terror.</p>
+          <p>The Law of Suspects (September 1793) let the authorities arrest anyone whose conduct or connections looked hostile, and the law of 22 Prairial (June 1794) sped up trials and stripped away most of the defence. Executions in Paris peaked that summer. On 9 Thermidor Year II (27 July 1794) the Convention turned on Robespierre, and the Terror wound down. The Tribunal was abolished in May 1795.</p>
+        </div>
+      </div>
+      <ol class="keydates">
+        <li><span class="keydates__d">14 Jul 1789</span>The Bastille falls</li>
+        <li><span class="keydates__d">10 Aug 1792</span>The monarchy falls</li>
+        <li><span class="keydates__d">17 Aug 1792</span>A first special tribunal is set up</li>
+        <li><span class="keydates__d">21 Jan 1793</span>Louis XVI is executed</li>
+        <li><span class="keydates__d">10 Mar 1793</span>The Revolutionary Tribunal is created</li>
+        <li><span class="keydates__d">6 Apr 1793</span>The Committee of Public Safety is created</li>
+        <li><span class="keydates__d">17 Sep 1793</span>The Law of Suspects</li>
+        <li><span class="keydates__d">10 Jun 1794</span>The law of 22 Prairial</li>
+        <li><span class="keydates__d">27 Jul 1794</span>9 Thermidor: Robespierre falls</li>
+      </ol>
+    </div>
+  </section>
+
   <section class="band" id="study">
     <div class="wrap">
       <p class="eyebrow">The project</p>
       <h2>Can the charge, the class and the date explain who was executed?</h2>
       <p class="lead">Between 1792 and 1795 the Paris Revolutionary Tribunal tried thousands of people. This project asks how much of the outcome, execution or acquittal, can be predicted from three things: the wording of the charge, the defendant's social class and the date of the trial.</p>
-      <p>I trained a model on 5,264 charges recorded by the historian Wallon. Then I used it to read the accusations against six people drawn from the records of the Committee of Public Safety, and to show what it makes of each one.</p>
+      <p>The historian Wallon recorded 5,264 charges. After removing duplicates, 4,220 remained, and I trained a model on 3,484 of them. Then I used it to read the accusations against the people on this site, drawn from the records of the Committee of Public Safety and from <i>Le Moniteur</i>, and to show what it makes of each one.</p>
       <div class="stats">
-        <div><span class="stat__n">5,264</span><span class="stat__l">charges in the dataset</span></div>
-        <div><span class="stat__n">0.863</span><span class="stat__l">AUC on 531 held-out trials</span></div>
-        <div><span class="stat__n">0.66</span><span class="stat__l">AUC on trials later than training</span></div>
+        <div><span class="stat__n">4,220</span><span class="stat__l">charges after removing duplicates</span></div>
+        <div><span class="stat__n">0.86</span><span class="stat__l">AUC on 736 held-out trials</span></div>
+        <div><span class="stat__n">0.75</span><span class="stat__l">AUC on trials later than training</span></div>
       </div>
-      <p>Date and class do most of the work: alone they reach 0.81. The charge text adds a little. And the model is much weaker on trials later than the ones it was trained on, which is the result to keep in mind when reading any score on this site.</p>
+      <p>Date and class do most of the work: together they reach 0.81, and the charge text lifts that to 0.86. On trials later than the ones it was trained on, the date stops helping, and the model scores 0.75, almost all of it from the charge and the class.</p>
+      <p class="repo">The code, notebooks and extraction pipeline are on <a href="https://github.com/mesmer138-ship-it/French-Rev-Project" target="_blank" rel="noopener">GitHub</a>.</p>
     </div>
   </section>
 
@@ -74,19 +108,19 @@
         <div class="source__text">
           <h3>The Committee of Public Safety</h3>
           <p>The Committee of Public Safety was created by the National Convention in April 1793 and became the working executive of the Terror, directing the war effort and the repression of suspected enemies of the Republic.</p>
-          <p>Its decisions and correspondence are published in Aulard's <i>Recueil des actes du Comité de salut public</i>. The accusations against the six people on this site are extracted from it.</p>
+          <p>Its decisions and correspondence are published in Aulard's <i>Recueil des actes du Comité de salut public</i> (Collection of the Acts of the Committee of Public Safety). Many of the accusations on this site are extracted from it.</p>
         </div>
       </article>
 
       <article class="source">
         <figure class="source__fig" data-img="assets/moniteur.jpg">
           <div class="source__ph">Le Moniteur universel</div>
-          <figcaption><i>Gazette nationale, ou Le Moniteur universel</i>, no. 20, 17–20 July 1789 (the taking of the Bastille).</figcaption>
+          <figcaption><i>Gazette nationale, ou Le Moniteur universel</i>, no. 20, 17–20 July 1789.</figcaption>
         </figure>
         <div class="source__text">
           <h3>Le Moniteur</h3>
           <p><i>Le Moniteur universel</i> was a Paris daily newspaper founded in November 1789 that became the Revolution's de facto official gazette, printing the debates of the assemblies and government announcements.</p>
-          <p>Where the Committee's records are thin for one of the six people, <i>Le Moniteur</i> supplies additional dated passages.</p>
+          <p>Most of the debates, denunciations and trial reports on this site come from <i>Le Moniteur</i>: the Convention's sittings, the clubs, and the indictments read in court.</p>
         </div>
       </article>
     </div>
@@ -94,30 +128,47 @@
 
   <section class="band band--alt" id="people">
     <div class="wrap">
-      <p class="eyebrow">Six people</p>
+      <p class="eyebrow">Five people</p>
       <h2>Read the accusations, then see what the model makes of them.</h2>
-      <p class="lead">Choose a person to see their charges in date order, each with its source, and the range of scores the model gives them.</p>
+      <p class="lead">Choose a person to follow their story from left to right: each card gives the passage as printed, its source and, for the charges, the score the model gives it.</p>
+      <p class="xp-note xp-note--people">Each scored charge shows a model score: a ranking from 0 to 1, not a probability or a measure of guilt.</p>
       <div class="picker" id="picker" role="tablist" aria-label="Choose a person"></div>
     </div>
     <div class="timeline-wrap" id="timeline-wrap" hidden>
-      <div class="wrap wrap--timeline"><ol class="timeline" id="timeline" aria-live="polite"></ol></div>
+      <div class="wrap wrap--timeline">
+        <div id="person-head"></div>
+        <div class="htl-bar">
+          <div class="htl-chips" id="htl-chips" aria-label="Jump to a chapter"></div>
+          <div class="htl-arrows">
+            <button class="htl-btn" id="htl-prev" type="button" aria-label="Earlier">&larr;</button>
+            <button class="htl-btn" id="htl-next" type="button" aria-label="Later">&rarr;</button>
+          </div>
+        </div>
+        <div class="htl-progress"><span id="htl-progress"></span></div>
+      </div>
+      <div class="htl" id="htl" tabindex="0" aria-label="Timeline. Scroll sideways, or use the arrow keys.">
+        <ol class="htl__track" id="timeline" aria-live="polite"></ol>
+      </div>
     </div>
   </section>
 
-  <section class="band" id="limits">
-    <div class="wrap">
-      <p class="eyebrow">How to read the scores</p>
-      <h2>A score is not a verdict.</h2>
-      <p class="lead">It estimates how often similar past cases ended in execution. It does not measure guilt, and it is not a calibrated probability.</p>
-      <p>Scores move with the wording of a charge: rewordings of the same accusation scored anywhere between 0.23 and 0.73. That is why each person gets a range, not one number.</p>
-    </div>
-  </section>
 
   
+  <section class="band" id="explained">
+    <div class="wrap wrap--wide">
+      <p class="eyebrow">Inside the model</p>
+      <h2>What pushed each score up or down.</h2>
+      <p class="lead">Five defendants from Wallon's record, ordered by date. Each chart starts from the average case and adds the three things the model reads: the wording of the charge, the date and the social class. Bars to the right push towards execution, bars to the left towards acquittal.</p>
+      <p class="xp-note"><span class="xp-note__label">How to read the scores.</span> These are model ranking scores, not probabilities or measures of guilt. They show how the model ranks each charge based on patterns learned from its training data.</p>
+      <div class="xp-list" id="explained-list"></div>
+    </div>
+  </section>
+
 </main>
 
-<footer class="foot"><div class="wrap">Thermidor · a data study, not a historical verdict.</div></footer>
+<footer class="foot"><div class="wrap">Thermidor · a data study of the Paris Revolutionary Tribunal · <a href="https://github.com/mesmer138-ship-it/French-Rev-Project" target="_blank" rel="noopener">Code on GitHub</a></div></footer>
 <script src="data/people.js"></script>
+<script src="data/explained.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

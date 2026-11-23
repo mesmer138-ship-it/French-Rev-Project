@@ -1,0 +1,70 @@
+// Five defendants from Wallon's record, each split into what pushed the
+// model's score up or down. Values are the engineered logistic regression's
+// SHAP contributions in log-odds, grouped into three features.
+// base: the average case's log-odds. fx: this person's log-odds.
+// score: the model score (fx turned into a 0-1 number).
+window.EXPLAINED = {
+  base: -0.007,
+  cases: [
+    {
+      name: 'Francisco de Miranda',
+      role: 'Venezuelan-born general in the French army; listed in Wallon as François Miranda',
+      date: '1793-05-16', date_text: '16 May 1793',
+      social_class: 'Military',
+      charge_fr: "avoir dû lever le siège de Maestricht / défaite à l'aile gauche ayant entraîné la perte de la bataille de Nerwinde",
+      charge_en: 'Being forced to lift the siege of Maastricht / the defeat on the left wing that lost the battle of Neerwinden',
+      outcome: 'Acquitted',
+      executed: false,
+      bars: [['Date', -1.21], ['Social class', 0.21], ['Charge text', -0.14]],
+      fx: -1.1472, score: 0.241,
+    },
+    {
+      name: 'Pierre-Gaspard Chaumette',
+      role: 'Procureur of the Paris Commune, known as Anaxagoras',
+      date: '1794-04-13', date_text: '13 April 1794 (24 Germinal Year II)',
+      social_class: 'Legal / administrative',
+      charge_fr: "complicité avec Hébert, Ronsin, Vincent, Mazuel et Momoro / conspiration contre la liberté et la sûreté du peuple français / tentative de troubler l'État par une guerre civile, de dissoudre la représentation nationale et de donner un nouveau tyran à l'État",
+      charge_en: 'Complicity with Hébert, Ronsin, Vincent, Mazuel and Momoro / conspiracy against the liberty and safety of the French people / trying to throw the State into civil war, dissolve the national representation and give the State a new tyrant',
+      outcome: 'Executed',
+      executed: true,
+      bars: [['Charge text', 1.78], ['Date', 0.88], ['Social class', 0.42]],
+      fx: 3.0842, score: 0.956,
+    },
+    {
+      name: 'Antoine-Laurent Lavoisier',
+      role: 'Chemist and former tax farmer (fermier général)',
+      date: '1794-05-08', date_text: '8 May 1794 (19 Floréal Year II)',
+      social_class: 'Nobility',
+      charge_fr: 'complot contre le peuple français tendant à favoriser les succès des ennemis de la France',
+      charge_en: 'A plot against the French people, aimed at helping the enemies of France succeed',
+      outcome: 'Executed',
+      executed: true,
+      bars: [['Social class', 1.5], ['Charge text', 1.18], ['Date', 0.22]],
+      fx: 2.8856, score: 0.947,
+    },
+    {
+      name: 'Julie Hermanson',
+      role: 'Laundress (blanchisseuse)',
+      date: '1794-06-13', date_text: '13 June 1794 (25 Prairial Year II)',
+      social_class: 'Artisan / tradesman',
+      charge_fr: "a déclaré vouloir crier Vive le roi, Vive la reine / a déclaré ne pas craindre la guillotine / a déclaré qu'il n'y a que les honnêtes gens qui soient guillotinés",
+      charge_en: 'Said she wanted to cry “Long live the king, long live the queen” / said she was not afraid of the guillotine / said that only honest people are guillotined',
+      outcome: 'Executed',
+      executed: true,
+      bars: [['Charge text', 1.29], ['Date', 1.18], ['Social class', -0.7]],
+      fx: 1.7626, score: 0.854,
+    },
+    {
+      name: 'Georges Couthon',
+      role: 'Deputy and member of the Committee of Public Safety',
+      date: '1794-07-28', date_text: '28 July 1794 (10 Thermidor Year II)',
+      social_class: 'Legal / administrative',
+      charge_fr: 'complicité dans la conspiration de Robespierre',
+      charge_en: 'Complicity in Robespierre’s conspiracy',
+      outcome: 'Executed',
+      executed: true,
+      bars: [['Date', 0.68], ['Charge text', 0.53], ['Social class', 0.42]],
+      fx: 1.6203, score: 0.835,
+    },
+  ],
+};
