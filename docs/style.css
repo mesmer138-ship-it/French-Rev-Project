@@ -270,3 +270,19 @@ figcaption{margin-top:10px;font-size:.72rem;color:var(--muted)}
   .wf__guides,.wf__axis,.wf__legend{left:auto;margin-left:100px}
   .wf__guides{left:100px}
 }
+
+/* phone fixes: show the whole hero painting, keep a visible menu */
+@media (max-width:900px){
+  .nav__links{gap:16px;font-size:.7rem;letter-spacing:.06em}
+}
+@media (max-width:640px){
+  .nav{flex-wrap:wrap;gap:10px;padding:18px 20px}
+  .nav__links{display:flex;width:100%;gap:18px;overflow-x:auto;white-space:nowrap;padding-bottom:4px;scrollbar-width:none}
+  .nav__links::-webkit-scrollbar{display:none}
+  .hero__art{background:url("assets/marat.jpg") center 22%/100% auto no-repeat,#000}
+  .hero__shade{background:linear-gradient(0deg,#000 0%,rgba(0,0,0,.75) 30%,rgba(0,0,0,0) 55%)}
+}
+@media (max-height:500px){
+  .hero__text{padding-bottom:56px}
+  h1{font-size:clamp(2.6rem,9vw,4.5rem)}
+}
