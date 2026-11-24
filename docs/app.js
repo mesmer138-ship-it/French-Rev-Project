@@ -236,6 +236,8 @@ function syncControls() {
 
 function showPerson(slug) {
   const p = window.PEOPLE[slug];
+  const hint = document.getElementById('picker-hint');
+  if (hint) hint.hidden = true;
   document.getElementById('person-head').replaceChildren(personHead(p));
 
   const track = document.getElementById('timeline');
