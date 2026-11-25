@@ -7,7 +7,7 @@ The three strongest model families sit within 0.015 test AUC of each other (0.85
 | Model | Tuning | Chosen settings | CV AUC | Test AUC | Multi-seed AUC | Test acc. |
 | --- | --- | --- | --- | --- | --- | --- |
 | Plain logistic | none (default C) | C = 1 | 0.774 ± 0.016 | 0.711 | 0.764 ± 0.028 | 0.670 |
-| Engineered logistic | knots × C grid (4 × 5 = 20 combinations), then 20, 30 and 40 knots at C = 1; grouped 5-fold CV | 40 knots, default C = 1 (CV is flat beyond about 20 to 30 knots; 15 knots: CV 0.866, test 0.845) | 0.873 ± 0.013 | 0.860 | 0.869 ± 0.020 | 0.789 |
+| Engineered logistic | knots × C grid (4 × 5 = 20 combinations), then 20, 30 and 40 knots at C = 1; grouped 5-fold CV | 40 knots, default C = 1 | 0.873 ± 0.013 | 0.860 | 0.869 ± 0.020 | 0.789 |
 | Decision tree, default | none | unlimited depth, class\_weight balanced; train AUC 0.9999 | 0.688 ± 0.025 | 0.712 | 0.694 ± 0.032 | 0.728 |
 | Decision tree, depth 4 | depth 2 to 8 by grouped 5-fold CV (manual loop) | depth 4, class\_weight balanced; train AUC 0.836 | 0.793 ± 0.021 | 0.798 | 0.794 ± 0.032 | 0.712 |
 | Random forest, default | none | library defaults, class\_weight balanced | 0.865 | 0.860 | 0.863 ± 0.014 | 0.781 |
